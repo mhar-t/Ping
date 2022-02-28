@@ -36,7 +36,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
         <Tab.Screen name="Friends" component={FriendList} options={{headerShown: false}}/>
         <Tab.Screen name="Garden of Goals" component={Goals} options={{headerShown: false}}/>
-        <Tab.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
+        
       </Tab.Navigator>
     </NavigationContainer>
   );

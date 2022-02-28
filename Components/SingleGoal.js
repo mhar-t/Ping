@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,11 +7,17 @@ import colors from '../Themes/Colors';
 import standardStyles from '../Themes/Styles';
 import { Ionicons } from '@expo/vector-icons';
 import { SearchBar } from 'react-native-screens';
+import { useNavigation } from '@react-navigation/native';
 
 
-export default function SingleGoal({ id, name, goalNumber, morning, time, plantImageUrl }) {
+export default function SingleGoal({ id, name, goalNumber, morning, time, plantImageUrl, screenName, profile, location }) {
+    const navigation = useNavigation();
+    
     if (morning === '1') {
         return (
+            <Pressable onPress={() => {navigation.navigate(screenName, {
+                goal: {id, name, goalNumber, morning, time, plantImageUrl, screenName, profile, location}
+              })}}>
             <View style={styles.plant}>
                 <View style={{height: 150, width: '100%', backgroundColor: colors.cream, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
                     <View style={{display: 'flex', flexDirection: 'row',  margin: 16, }}>
@@ -22,9 +28,13 @@ export default function SingleGoal({ id, name, goalNumber, morning, time, plantI
                     <Image source={plantImageUrl} style={{resizeMode: 'contain', width: 134, height: 200, alignSelf: 'center', bottom: 40 }}/> 
                 </View>
             </View>
+            </Pressable>
         )
     } else {
         return (
+            <Pressable onPress={() => {navigation.navigate(screenName, {
+                goal: {id, name, goalNumber, morning, time, plantImageUrl, screenName, profile, location}
+              })}}>
             <View style={styles.plant}>
                 <View style={{height: 150, width: '100%', backgroundColor: colors.purple, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
                     <View style={{display: 'flex', flexDirection: 'row',  margin: 16, }}>
@@ -35,6 +45,7 @@ export default function SingleGoal({ id, name, goalNumber, morning, time, plantI
                     <Image source={plantImageUrl} style={{resizeMode: 'contain', width: 134, height: 200, alignSelf: 'center', bottom: 40 }}/> 
                 </View>
             </View>
+            </Pressable>
         )
     }
 }
