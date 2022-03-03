@@ -9,6 +9,7 @@ const colors = {
     cream: '#F0E6D7',
     purewhite: '#FFFFFF',
     slidergray: '#C4C4C4',
+    background: '#FFF9F0',
   };
   
   export default colors;

@@ -63,19 +63,17 @@ export default function GoalsEdit({ route }) {
                     
                     {plantThumbnail()}
                     <Text style={styles.subheading}>Edit Connection Goal</Text>
-                    <View style={{display: 'flex', flexDirection: 'row',width: 348, height: 80, alignSelf: 'center', justifyContent: 'space-between', marginTop: 8, shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset}}>
-                        <View style={{backgroundColor: colors.purewhite, width: 132, height: 57, marginTop: 16, borderRadius: 8,  }}>
+                    <View style={{display: 'flex', flexDirection: 'row',width: 348, height: 80, alignSelf: 'center', justifyContent: 'center', marginTop: 8, marginLeft: 24}}>
+                        <View style={{backgroundColor: colors.purewhite, width: 132, height: 57, marginTop: 16, borderRadius: 8, shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset }}>
                             <Text style={{color: colors.black, fontWeight: 'bold', fontSize: 24, textAlign: 'right', marginTop: 12, marginRight: 48}}>{goal.goalNumber}</Text> 
                             <View style={{display: 'flex', flexDirection: 'column', width: 36, height: '100%', bottom: 38, left: 104}}>
                                 <Ionicons name="caret-up-outline" size={24} color={colors.black} />
                                 <Ionicons name="caret-down-outline" size={24} color={colors.black} />
                             </View>
                         </View>
-                        <View style={{backgroundColor: colors.purewhite, width: 172, height: 57, marginTop: 16, borderRadius: 8,  }}>
+                        <View style={{width: 172, height: 57, marginTop: 16, borderRadius: 8,  }}>
                             <Text style={{color: colors.black, fontWeight: 'bold', fontSize: 24, textAlign: 'right', marginTop: 12, marginRight: 48}}>per week</Text> 
-                            <View style={{display: 'flex', flexDirection: 'column', width: 36, height: '100%', bottom: 24, left: 140}}>
-                                <Ionicons name="caret-down-outline" size={24} color={colors.black} />
-                            </View>
+                            
                         </View>
                     </View>
                     <View style={{display: 'flex', flexDirection: 'row', width: 386, height: 57, marginTop: 8, borderRadius: 8, justifyContent: 'space-between' }}>

@@ -30,7 +30,7 @@ export default function SingleGoal({ id, name, goalNumber, morning, time, plantI
             </View>
             </Pressable>
         )
-    } else {
+    } else if (morning === '0') {
         return (
             <Pressable onPress={() => {navigation.navigate(screenName, {
                 goal: {id, name, goalNumber, morning, time, plantImageUrl, screenName, profile, location}

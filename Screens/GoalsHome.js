@@ -1,88 +1,64 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Pressable } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import colors from '../Themes/Colors';
 import standardStyles from '../Themes/Styles';
 import { Ionicons } from '@expo/vector-icons';
-import { SearchBar } from 'react-native-screens';
 import SingleGoal from '../Components/SingleGoal';
+import GoalsAdd from './GoalsAdd';
+import { useNavigation } from '@react-navigation/native';
+import { DATA } from '../assets/goals/goals1'
+import { DATA2 } from '../assets/goals/goals2';
+import React, { useState } from 'react';
+import SearchBar from '../Components/searchbar';
+import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function GoalsHome({}) {
-  let DATA = [
-    {
-      id: '1',
-      name: 'Ada',
+  const navigation = useNavigation();
+  
+  
+  const [goals, setGoals] = useState(DATA)
+  const addElementJames = () => {
+      var newArray = [...goals , {id: '4',
+      name: 'James',
       goalNumber: '1',
       morning: '0',
       time: '8:48 PM',
       plantImageUrl: require('../assets/images/plants/1.png'),
-      screenName: 'AdaGoal',
-      profile: require('../assets/images/profile/ada.png'),
-      location: 'Palo Alto, USA',
-    },
-    {
-      id: '2',
-      name: 'Mhar',
-      goalNumber: '4',
-      morning: '1',
-      time: '5:48 PM',
-      plantImageUrl: require('../assets/images/plants/2.png'),
-      screenName: 'MharGoal',
-      profile: require('../assets/images/profile/mhar.png'),
-      location: 'Manila, Philippines',
-    },
-    {
-      id: '3',
-      name: 'Kristina',
-      goalNumber: '2',
-      morning: '0',
-      time: '10:48 PM',
-      plantImageUrl: require('../assets/images/plants/2.png'),
-      screenName: 'KristinaGoal',
-      profile: require('../assets/images/profile/kristina.jpg'),
-      location: 'New York, USA',
-    },
-  ];  
+      screenName: 'JamesGoal',
+      profile: require('../assets/images/profile/james.jpg'),
+      location: 'Palo Alto, USA',}];
+      setGoals(newArray);
+}
 
-  let DATA2 = [
-    {
-      id: '1',
-      name: 'Emily',
-      goalNumber: '1',
-      morning: '1',
-      time: '9:48 AM',
-      plantImageUrl: require('../assets/images/plants/3.png'),
-      screenName: 'EmilyGoal',
-      profile: require('../assets/images/profile/emily.png'),
-      location: 'Ontario, Canada',
-    },
-    {
-      id: '2',
-      name: 'Bryan',
-      goalNumber: '4',
-      morning: '1',
-      time: '5:48 PM',
-      plantImageUrl: require('../assets/images/plants/4.png'),
-      screenName: 'BryanGoal',
-      profile: require('../assets/images/profile/bryan.jpg'),
-      location: 'Jakarta, Indonesia'
-    },
+  const addElementMorgan = () => {
+    var newArray = [...goals , {id: '5',
+    name: 'Morgan',
+    goalNumber: '1',
+    morning: '0',
+    time: '8:48 PM',
+    plantImageUrl: require('../assets/images/plants/1.png'),
+    screenName: 'MorganGoal',
+    profile: require('../assets/images/profile/morgan.jpg'),
+    location: 'Palo, Alto',}];
+    setGoals(newArray);
+  }
 
-    {
-      id: '3',
-      name: 'Pablo',
-      goalNumber: '4',
-      morning: '0',
-      time: '7:48 PM',
-      plantImageUrl: require('../assets/images/plants/4.png'),
-      screenName: 'PabloGoal',
-      profile: require('../assets/images/profile/pablo.jpg'),
-      location: 'Chicago, Illinois'
-    },
-  ]; 
-  
+  const addElementMTL = () => {
+    var newArray = [...goals , {id: '6',
+    name: 'MTL',
+    goalNumber: '1',
+    morning: '1',
+    time: '3:48 PM',
+    plantImageUrl: require('../assets/images/plants/1.png'),
+    screenName: 'MorganGoal',
+    profile: require('../assets/images/profile/mtl.jpg'),
+    location: 'Berlin, Germany',}];
+    setGoals(newArray);
+  }
+
   const renderItem = (item) => (
     <SingleGoal
       name={item.name}
@@ -98,32 +74,44 @@ export default function GoalsHome({}) {
   );
 
   return (
-      <SafeAreaView>
-        <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', margin: 24, alignItems: 'center'}}>
-          <Text style={styles.header}>Garden of Goals</Text>
-          <Ionicons name="add-circle" size={36} color={colors.darkgreen} />
-        </View>
-        <Text style={styles.subheading}>In the garden of goals, you can view, set and edit the connections you have with your friends.</Text>
-        <View style={styles.searchBar}>
-          <Text style={styles.searchText}>Search</Text>
-          <Ionicons name="search-circle" size={36} color={colors.darkpink} style={{alignSelf: 'center', marginRight: 8}} />
-        </View>
+      <View style={{backgroundColor: colors.background, width: '100%', height: '100%'}}>
+        <View style={styles.header}>
+                <View style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'row', padding: 24, marginTop: 40, alignContent: 'center', justifyContent: 'space-between'}}>
+                    <View></View>
+                    <Text style={styles.headerText}>Garden of Goals</Text>
+                    <Pressable onPress={() => {navigation.navigate("GoalsAdd", { addElementJames: addElementJames, addElementMorgan: addElementMorgan, addElementMTL: addElementMTL })}}>
+                      <Ionicons name="add-circle" size={36} color={colors.darkgreen} />
+                    </Pressable>
+                </View>
+            </View>
+            <Text style={styles.subheading}>In the garden of goals, you can view, set and edit the connections you have with your friends.</Text>
+        <SearchBar />
+        
+        
         <Text style={styles.subheading2}>Water these goals this week:</Text>
-        <FlatList
-          horizontal={true}
-          data={DATA} 
-          renderItem={({item}) => renderItem(item)} 
-          keyExtractor={(item) => item.id} 
-          inverted
-        />
+        <View style={styles.listBackground}>
+          <FlatList
+            horizontal={true}
+            data={goals} 
+            renderItem={({item}) => renderItem(item)} 
+            keyExtractor={(item) => item.id} 
+            showsHorizontalScrollIndicator={false}
+            initialScrollIndex={goals.length - 1}
+            inverted
+            
+          />
+        </View>
         <Text style={styles.subheading2}>These goals are growing strong:</Text>
-        <FlatList
-          horizontal={true}
-          data={DATA2} 
-          renderItem={({item}) => renderItem(item)} 
-          keyExtractor={(item) => item.id} 
-        />
-      </SafeAreaView>
+        <View style={styles.listBackground}>
+          <FlatList
+            horizontal={true}
+            data={DATA2} 
+            renderItem={({item}) => renderItem(item)} 
+            keyExtractor={(item) => item.id} 
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+      </View>
     );
   }
 
@@ -131,7 +119,7 @@ export default function GoalsHome({}) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: colors.background,
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -144,7 +132,8 @@ export default function GoalsHome({}) {
 
     subheading: {
       marginLeft: 24, 
-      marginTop: -8, 
+      marginTop: 24,
+      marginBottom: 0, 
       fontSize: 14, 
       color: colors.brown, 
       fontWeight: '600'
@@ -152,34 +141,51 @@ export default function GoalsHome({}) {
 
     subheading2: {
       marginLeft: 24, 
-      marginTop: 16, 
+      marginTop: 8, 
       fontSize: 18, 
+      marginBottom: 8,
       color: colors.brown, 
       fontWeight: '600'
     },
 
-    searchBar: {
-      width: 374,
-      height: 44,
-      backgroundColor: colors.white,
-      display: 'flex',
-      flexDirection: 'row',
+    listBackground: {
+      backgroundColor: colors.purewhite,
+      width: '100%',
+      height: 240,
+      
+      justifyContent: 'center',
+      shadowColor: "#292929",
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: { width: -1, height: 5 },
+    marginBottom: 16,
+    }, 
+    header: {
+      width: '100%',
+      height: 94,
+      backgroundColor: colors.purewhite,
+      alignItems: 'center',
       justifyContent: 'space-between',
-      borderRadius: 10,
-      shadowColor: standardStyles.shadowColor,
-      shadowOpacity: standardStyles.shadowOpacity,
-      shadowRadius: standardStyles.shadowRadius,
-      shadowOffset: standardStyles.shadowOffset,
-      margin: 24,
+      display: 'flex',
+      flexDirection: 'row'
     },
-
-    searchText: {
-      fontSize: 13,
-      fontStyle: 'italic',
-      color: colors.gray, 
-      marginLeft: 18, 
-      alignSelf: 'center',
-    },
-
     
+    header2: {
+        width: '100%',
+        height: 94,
+        backgroundColor: colors.darkgreen,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'row'
+      },
+
+    headerText: {
+        fontSize: 20, 
+        color: colors.brown,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        textAlign: 'center',
+        marginLeft: 32
+    },
   });
