@@ -19,9 +19,9 @@ export default function GoalsAddProcess({ route }) {
     const navigation = useNavigation();
     const {name, profile, addElement} = route.params;
 
-  function two() {
+  function two({name}) {
       addElement();
-      navigation.navigate('GoalsHome');
+      navigation.navigate(name + 'GoalAddConfirmation', {name});
   }
 
     return (
@@ -69,7 +69,7 @@ export default function GoalsAddProcess({ route }) {
                                 <Text style={styles.buttonText}>Cancel</Text>
                             </View>
                         </Pressable>
-                        <Pressable onPress={() => {two()}}>
+                        <Pressable onPress={() => {two({name})}}>
                             <View style={styles.buttonPink}>
                                 <Text style={styles.buttonText}>Confirm</Text>
                             </View>

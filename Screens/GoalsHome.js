@@ -24,12 +24,12 @@ export default function GoalsHome({}) {
       var newArray = [...goals , {id: '4',
       name: 'James',
       goalNumber: '1',
-      morning: '0',
-      time: '8:48 PM',
+      morning: '1',
+      time: '4:48 PM',
       plantImageUrl: require('../assets/images/plants/1.png'),
       screenName: 'JamesGoal',
       profile: require('../assets/images/profile/james.jpg'),
-      location: 'Palo Alto, USA',}];
+      location: 'Palo Alto, CA',}];
       setGoals(newArray);
 }
 
@@ -37,12 +37,12 @@ export default function GoalsHome({}) {
     var newArray = [...goals , {id: '5',
     name: 'Morgan',
     goalNumber: '1',
-    morning: '0',
-    time: '8:48 PM',
+    morning: '1',
+    time: '4:48 PM',
     plantImageUrl: require('../assets/images/plants/1.png'),
     screenName: 'MorganGoal',
     profile: require('../assets/images/profile/morgan.jpg'),
-    location: 'Palo, Alto',}];
+    location: 'Palo Alto, CA',}];
     setGoals(newArray);
   }
 
@@ -51,11 +51,11 @@ export default function GoalsHome({}) {
     name: 'MTL',
     goalNumber: '1',
     morning: '1',
-    time: '3:48 PM',
+    time: '4:48 PM',
     plantImageUrl: require('../assets/images/plants/1.png'),
-    screenName: 'MorganGoal',
+    screenName: 'MTLGoal',
     profile: require('../assets/images/profile/mtl.jpg'),
-    location: 'Berlin, Germany',}];
+    location: 'Palo Alto, CA',}];
     setGoals(newArray);
   }
 
@@ -96,8 +96,8 @@ export default function GoalsHome({}) {
             renderItem={({item}) => renderItem(item)} 
             keyExtractor={(item) => item.id} 
             showsHorizontalScrollIndicator={false}
-            initialScrollIndex={goals.length - 1}
-            inverted
+            // initialScrollIndex={goals.length - 1}
+            // inverted
             
           />
         </View>
@@ -122,12 +122,6 @@ export default function GoalsHome({}) {
       backgroundColor: colors.background,
       alignItems: 'center',
       justifyContent: 'center',
-    },
-
-    header: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      color: colors.black,
     },
 
     subheading: {

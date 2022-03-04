@@ -17,7 +17,7 @@ export default function GoalsEdit({ route }) {
     function plantThumbnail(){
         if (goal.morning === '1') {
         return (
-            <View style={{display: 'flex', flexDirection: 'column', width: 348, height: 300, alignSelf: 'center',backgroundColor: colors.darkgreen, marginTop: 24, borderRadius: 24}}>
+            <View style={styles.thumbnail}>
                 <View style={{width: '100%', height: 200, backgroundColor: colors.cream, borderTopLeftRadius: 24, borderTopRightRadius: 24}}>
                     <Image source={goal.plantImageUrl} style={{resizeMode: 'contain', width: 209, height: 338, alignSelf: 'center', bottom: 20,  left: 64}}/> 
                 </View>
@@ -27,7 +27,7 @@ export default function GoalsEdit({ route }) {
         )
         } else {
             return (
-                <View style={{display: 'flex', flexDirection: 'column', width: 348, height: 300, alignSelf: 'center',backgroundColor: colors.darkgreen, marginTop: 24, borderRadius: 24}}>
+                <View style={styles.thumbnail}>
                     <View style={{width: '100%', height: 200, backgroundColor: colors.purple, borderTopLeftRadius: 24, borderTopRightRadius: 24}}>
                         <Image source={goal.plantImageUrl} style={{resizeMode: 'contain', width: 209, height: 338, alignSelf: 'center', bottom: 20,  left: 64}}/> 
                     </View>
@@ -40,7 +40,7 @@ export default function GoalsEdit({ route }) {
 
     function goalEdit() {
         return (
-            <View style={{height: '100%', width: '100%', backgroundColor: colors.white, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
+            <View style={{height: '100%', width: '100%', backgroundColor: colors.background, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
                     <View style={{marginLeft: 36, marginTop: 8, marginBottom: 16, display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
                         <Pressable onPress={() => navigation.goBack()}>
                             <Ionicons name="arrow-back-outline" size={36} color={colors.black} />
@@ -116,7 +116,7 @@ const styles=StyleSheet.create({
         flex: 1,
         display: 'flex',
         justifyContent: 'space-between',
-        backgroundColor: colors.white,
+        backgroundColor: colors.background,
       },
 
       plantNight: {
@@ -207,5 +207,10 @@ const styles=StyleSheet.create({
         color: colors.black,
         alignSelf: 'center',
         top: 16
+      },
+
+      thumbnail: {
+        display: 'flex', flexDirection: 'column', width: 348, height: 300, alignSelf: 'center',backgroundColor: colors.darkgreen, marginTop: 24, borderRadius: 24,
+        shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset
       }
 })

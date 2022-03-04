@@ -1,19 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import colors from '../Themes/Colors';
-import standardStyles from '../Themes/Styles';
-import { Ionicons } from '@expo/vector-icons';
-import { SearchBar } from 'react-native-screens';
-import SingleGoal from '../Components/SingleGoal';
 import GoalsHome from './GoalsHome';
 import GoalFullScreen from '../Components/GoalFullScreen';
 import GoalsEdit from './GoalsEdit';
 import GoalsAdd from './GoalsAdd';
 import GoalsAddProcess from '../Components/GoalAddProcess';
+import GoalsAddConfirmation from '../Components/GoalAddConfirmation';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +42,10 @@ export default function Goals({}) {
     <Stack.Screen name="JamesGoalAdd" component={GoalsAddProcess} />
     <Stack.Screen name="MorganGoalAdd" component={GoalsAddProcess} />
     <Stack.Screen name="MTLGoalAdd" component={GoalsAddProcess} />
+
+    <Stack.Screen name="JamesGoalAddConfirmation" component={GoalsAddConfirmation} />
+    <Stack.Screen name="MorganGoalAddConfirmation" component={GoalsAddConfirmation} />
+    <Stack.Screen name="MTLGoalAddConfirmation" component={GoalsAddConfirmation} />
   </Stack.Navigator>
     );
   }

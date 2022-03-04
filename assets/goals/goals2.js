@@ -31,6 +31,6 @@ export var DATA2 = [
       plantImageUrl: require('../images/plants/4.png'),
       screenName: 'PabloGoal',
       profile: require('../images/profile/pablo.jpg'),
-      location: 'Chicago, Illinois'
+      location: 'Chicago, IL, USA'
     },
   ]; 

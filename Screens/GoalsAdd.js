@@ -19,6 +19,8 @@ export default function GoalsAdd({ route }) {
     const navigation = useNavigation();
     const { addElementJames, addElementMorgan, addElementMTL } = route.params; 
 
+    
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>

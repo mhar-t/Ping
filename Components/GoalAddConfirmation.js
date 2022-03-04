@@ -6,48 +6,57 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import GoalsEdit from '../Screens/GoalsEdit';
 
-
-export default function GoalAddConfirmation({ route }) {
+function screen( name, profile, location, time, number ) {
     const navigation = useNavigation();
-    const { name } = route.params;
+    return (
+        <SafeAreaView style={styles.plant}>
+            <View style={{height: '100%', width: '100%', backgroundColor: colors.cream, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
+                <View style={{marginLeft: 36, marginTop: 8, marginBottom: 16, display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Pressable onPress={() => navigation.navigate('GoalsHome')}>
+                        <Ionicons name="close-outline" size={36} color={colors.black} />
+                    </Pressable>
+                    
+                </View>
+                <View style={{display: 'flex', flexDirection: 'row',  marginLeft: 36 }}>
+                    <View style={{shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset,}}>
+                        <Image source={profile} style={styles.profileImage}/> 
+                    </View>
+                    <Text style={styles.plantNameMorning}>{name}</Text>
+                    <Ionicons name="notifications-off-circle-outline" size={36} color={colors.black} />
+                </View>
+                <View style={{marginTop: -20}}>
+                    <Text style={styles.plantSubheadingMorning}>{location}</Text>
+                    <Text style={styles.plantSubheadingMorning}>{time}</Text>
+                </View>
+                
+                <View style={{display: 'flex', flexDirection: 'column', width: '100%'}}>
+                    <View style={{width: '100%', height: 500, backgroundColor: colors.darkgreen, bottom: -400}}>
+                        <Image source={require('../assets/images/plants/1.png')} style={{resizeMode: 'contain', width: 415, height: 632, alignSelf: 'center', bottom: 425 }}/> 
+                    </View>
+                    <Text style={styles.plantGoalNumber}>{number}x per week</Text> 
+                    <Text style={styles.confirmText}>Goal added! Watch your plant grow as you make progress!</Text>                           
+                </View>
+            </View>
+        </SafeAreaView>
+    )
+}
+
+export default function GoalsAddConfirmation({ route }) {
     
+    const { name } = route.params;
     if (name === 'Morgan') {
         return (
-            <SafeAreaView style={styles.plant}>
-                <View style={{height: '100%', width: '100%', backgroundColor: colors.cream, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
-                    <View style={{marginLeft: 36, marginTop: 8, marginBottom: 16, display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <Pressable onPress={() => navigation.navigate('GoalsHome')}>
-                            <Ionicons name="arrow-back-outline" size={36} color={colors.black} />
-                        </Pressable>
-                        <Pressable onPress={() => {navigation.navigate(goal.screenName + 'Edit', {goal})}}>
-                            <View style={{width: 63, height: 32, borderRadius: 8, backgroundColor: colors.cream, borderColor: colors.brown, borderWidth: 2, display: 'flex', alignItems: 'center', right: 24, top: 6}}>
-                                <Text style={styles.edit}>EDIT</Text>
-                            </View>
-                        </Pressable>
-                    </View>
-                    <View style={{display: 'flex', flexDirection: 'row',  marginLeft: 36 }}>
-                        <View style={{shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset,}}>
-                            <Image source={goal.profile} style={styles.profileImage}/> 
-                        </View>
-                        <Text style={styles.plantNameMorning}>{goal.name}</Text>
-                        <Ionicons name="notifications-off-circle-outline" size={36} color={colors.black} />
-                    </View>
-                    <View style={{marginTop: -20}}>
-                        <Text style={styles.plantSubheadingMorning}>{goal.location}</Text>
-                        <Text style={styles.plantSubheadingMorning}>{goal.time}</Text>
-                    </View>
-                    <View style={{display: 'flex', flexDirection: 'column', width: '100%'}}>
-                        <View style={{width: '100%', height: 500, backgroundColor: colors.darkgreen, bottom: -400}}>
-                            <Image source={goal.plantImageUrl} style={{resizeMode: 'contain', width: 415, height: 632, alignSelf: 'center', bottom: 425 }}/> 
-                        </View>
-                        <Text style={styles.plantGoalNumber}>{goal.goalNumber}x per week</Text> 
-                        <Text style={styles.plantGoalDescription}>Woo! You are on track with your goal!</Text> 
-                         
-                    </View>
-                </View>
-            </SafeAreaView>
+            screen( "Morgan", require('../assets/images/profile/morgan.jpg'), 'Palo Alto, USA', '4:48 PM', '1' )
         )
-    } 
+    } else if (name === 'James') {
+        return (
+            screen( "James", require('../assets/images/profile/james.jpg'), 'Palo Alto, USA', '4:48 PM', '1' )
+        )
+    } else {
+        return (
+            screen( "MTL", require('../assets/images/profile/mtl.jpg'), 'Palo Alto, USA', '4:48 PM', '1' )
+        )
+    }
 }
 
 const styles=StyleSheet.create({
@@ -131,5 +140,14 @@ const styles=StyleSheet.create({
         fontWeight: '500',
         top: 6,
         color: colors.white,
+    },
+
+    confirmText: {
+        color: colors.brown,
+        fontSize: 24,
+        textAlign: 'center',
+        margin: 48,
+        top: -500,
+        fontWeight: '600'
     }
 })

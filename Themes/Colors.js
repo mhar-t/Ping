@@ -10,6 +10,8 @@ const colors = {
     purewhite: '#FFFFFF',
     slidergray: '#C4C4C4',
     background: '#FFF9F0',
+    lightpink: '#F3CCCC',
+    lightbrowngray: '#8E7B7B',
   };
   
   export default colors;
