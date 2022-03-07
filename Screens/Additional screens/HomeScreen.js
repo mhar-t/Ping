@@ -7,9 +7,13 @@ import colors from '../../Themes/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { DATA3 } from '../../assets/tokens/token1';
 import TokenHome from '../../Components/TokenHome';
+import React, { useState } from 'react';
+import { DATA4 } from '../../assets/moments/moment1';
+import MomentLogHome from '../../Components/MomentLogHome';
+
 
 export default function HomeScreen({}) {
-    let isThereActiveMoment = true;
+    const [count, setCount] = useState(0);
     const navigation = useNavigation();
 
     const renderItem = (item) => (
@@ -23,18 +27,57 @@ export default function HomeScreen({}) {
           opened={item.opened}/>
       );
 
+      const renderItem2 = (item) => (
+        <MomentLogHome
+          name={item.name}
+          id={item.id}
+          profile={item.profile}
+          type={item.type}
+          theirTime={item.theirTime}
+          location={item.location}
+          yourTime={item.yourTime}/>
+      );
+
+      function updateMoment() {
+          setCount(count + 1)
+        navigation.navigate('MharSharedMoment', {name: 'Mhar', profile: require('../../assets/images/profile/mhar.png'), time: '5:48 PM', location: 'Manila, Philippines', type: 0})
+      }
+
     function activeMoment() {
-        return (
-            <Pressable onPress={() => {navigation.navigate('MharSharedMoment', {name: 'Mhar', profile: require('../../assets/images/profile/mhar.png')})}}>
-            <View style={styles.activeMomentBox}>
-                <Text style={styles.joinActiveMoment}>Join Active Moment</Text>
-                <Text style={styles.joinActiveMomentSub}>Mhar is currently thinking of you. Tap here to join him and share the moment. </Text>
-                <View style={{shadowColor: colors.darkpink, shadowOpacity: 1, shadowRadius: 15, shadowOffset: { width: 0, height:  0 },}}>
-                <Image source={require('../../assets/images/profile/mhar.png')} style={styles.activeMomentPicture}/>
+        if (count == 0) {
+            return (
+                <Pressable onPress={() => {updateMoment()}}>
+                    <View style={styles.box}>
+                    <View style={styles.activeMomentBox}>
+                        <Text style={styles.joinActiveMoment}>Join Active Moment</Text>
+                        <Text style={styles.joinActiveMomentSub}>Mhar is currently thinking of you. Tap here to join him and share the moment. </Text>
+                        <View style={{shadowColor: colors.darkpink, shadowOpacity: 1, shadowRadius: 15, shadowOffset: { width: 0, height:  0 },}}>
+                        <Image source={require('../../assets/images/profile/mhar.png')} style={styles.activeMomentPicture}/>
+                        </View>
+                    </View></View>
+                </Pressable>
+            );
+        } else {
+            return (
+                <View>
+                    <FlatList
+                        horizontal={true}
+                        data={DATA4} 
+                        renderItem={({item}) => renderItem2(item)} 
+                        keyExtractor={(item) => item.id} 
+                        showsHorizontalScrollIndicator={false}
+                        inverted
+                        ListFooterComponent={<View style={{marginLeft:24}}></View>}
+                    />
+                    <Pressable onPress={() => navigation.navigate('MomentChooseProcess')}>
+                    <View style={styles.pinkbutton}>
+                        <Image source={require('../../assets/icons/momentgrayscale.png')} style={styles.icon2}/>
+                        <Text style={styles.buttonText}>Create Moment</Text>
+                    </View> 
+                    </Pressable>
                 </View>
-            </View>
-            </Pressable>
-        );
+            );
+        }
     }
 
     return (
@@ -48,17 +91,19 @@ export default function HomeScreen({}) {
                     </Pressable>
                 </View>
             </View>
-            <View style={styles.box}>
+            <View>
                 <View style={styles.titlecard}>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                         <Image source={require('../../assets/icons/moment.png')} style={styles.icon}/>
                         <Text style={styles.subheading}>Your Moments</Text>
                         <Ionicons name="information-circle-outline" size={24} color={colors.brown} />
                     </View>
+                    <Pressable onPress={() => {navigation.navigate('MomentsLog')}}>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                         <Text style={styles.seeAll}>See All</Text>
                         <Ionicons name="chevron-forward-outline" size={24} color={colors.brown} />
                     </View>
+                    </Pressable>
                 </View>
                 {activeMoment()}
                 <View style={styles.titlecard}>
@@ -80,6 +125,7 @@ export default function HomeScreen({}) {
                     renderItem={({item}) => renderItem(item)} 
                     keyExtractor={(item) => item.id} 
                     showsHorizontalScrollIndicator={false}
+                    ListHeaderComponent={<View style={{marginLeft:32}}></View>}
                 />
                 <View style={styles.pinkbutton}>
                     <Image source={require('../../assets/icons/tokensend.png')} style={styles.icon2}/>
@@ -149,12 +195,13 @@ const styles = StyleSheet.create({
     titlecard: {
         display: 'flex',
         flexDirection: 'row',
-        width: '100%',
+        width: 375,
         height: 48, 
         // backgroundColor: 'white',
         marginTop: 24, 
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignSelf: 'center'
     },
 
     subheading: {
@@ -230,6 +277,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'row',
+        marginBottom: 20
         
     },
 

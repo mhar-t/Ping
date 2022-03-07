@@ -10,12 +10,20 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function SharedMoment({route}) {
     const navigation = useNavigation();
-    const {name, profile} = route.params
+    const {name, profile, time, location, type} = route.params
+
+    function whereToNavigate() {
+        if (name === 'Mhar') {
+            navigation.navigate('MharMomentHomeScreenConfirm', {name: name, profile: profile, time: time, location: location, type: type})
+        } else {
+            navigation.navigate(name + 'ConfirmMoment', {name: name, profile: profile, time: time, location: location, type: type})
+        }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={{width: '85%', height: 36, alignSelf: 'center', top: 8}}>
-                <Pressable onPress={() => navigation.goBack()}>
+            <Pressable onPress={() => whereToNavigate()}>
                     <Ionicons name="close-outline" size={32} color={colors.black}  />
                 </Pressable>
             </View>
@@ -28,7 +36,7 @@ export default function SharedMoment({route}) {
 
             <View style={styles.textDesc}>
                 <Ionicons name="information-circle-outline" size={28} color={colors.black} />
-                <Text style={styles.textDescInfo}>You and Mhar may be 342 miles away from each other but in this moment you are both here thinking of each other.</Text>
+                <Text style={styles.textDescInfo}>You and {name} may be 342 miles away from each other but in this moment you are both here thinking of each other.</Text>
             </View>
         </SafeAreaView>
     )

@@ -97,7 +97,7 @@ export default function GoalsHome({}) {
             keyExtractor={(item) => item.id} 
             showsHorizontalScrollIndicator={false}
             // initialScrollIndex={goals.length - 1}
-            // inverted
+            inverted
             
           />
         </View>
@@ -149,10 +149,10 @@ export default function GoalsHome({}) {
       
       justifyContent: 'center',
       shadowColor: "#292929",
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowOffset: { width: -1, height: 5 },
-    marginBottom: 16,
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
+      shadowOffset: { width: -1, height: 5 },
+      marginBottom: 16,
     }, 
     header: {
       width: '100%',

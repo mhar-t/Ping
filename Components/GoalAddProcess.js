@@ -19,7 +19,7 @@ export default function GoalsAddProcess({ route }) {
     const navigation = useNavigation();
     const {name, profile, addElement} = route.params;
 
-  function two({name}) {
+  function two(name) {
       addElement();
       navigation.navigate(name + 'GoalAddConfirmation', {name});
   }
@@ -69,7 +69,7 @@ export default function GoalsAddProcess({ route }) {
                                 <Text style={styles.buttonText}>Cancel</Text>
                             </View>
                         </Pressable>
-                        <Pressable onPress={() => {two({name})}}>
+                        <Pressable onPress={() => {two(name)}}>
                             <View style={styles.buttonPink}>
                                 <Text style={styles.buttonText}>Confirm</Text>
                             </View>
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     buttonPink: {
       width: 168,
       height: '100%',
-      backgroundColor: colors.darkpink,
+      backgroundColor: colors.lightpink,
       borderRadius: 12,
       shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset
   },

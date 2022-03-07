@@ -12,6 +12,8 @@ const colors = {
     background: '#FFF9F0',
     lightpink: '#F3CCCC',
     lightbrowngray: '#8E7B7B',
+    darkgray: '#656565',
+    lightgray: '#C4C4C4',
   };
   
   export default colors;

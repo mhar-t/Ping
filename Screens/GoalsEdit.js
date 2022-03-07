@@ -196,7 +196,7 @@ const styles=StyleSheet.create({
       buttonPink: {
         width: 168,
         height: '100%',
-        backgroundColor: colors.darkpink,
+        backgroundColor: colors.lightpink,
         borderRadius: 12,
         shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset
     },
