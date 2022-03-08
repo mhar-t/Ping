@@ -3,10 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import HomeScreen from './Screens/Home';
+import HomeStack from './Screens/Home';
 import FriendList from './Screens/FriendsList';
 import Goals from './Screens/Goals';
-import Profile from './Screens/Profile';
 import Colors from './Themes/Colors';
 
 const Tab = createBottomTabNavigator();
@@ -33,10 +32,9 @@ export default function App() {
           headerShown: false,
           tabBarShowLabel: false,
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
+        <Tab.Screen name="Home" component={HomeStack} options={{headerShown: false}}/>
         <Tab.Screen name="Friends" component={FriendList} options={{headerShown: false}}/>
         <Tab.Screen name="Garden of Goals" component={Goals} options={{headerShown: false}}/>
-        <Tab.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
