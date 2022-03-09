@@ -114,10 +114,12 @@ export default function HomeScreen({}) {
                         <Text style={styles.subheading}>Your Tokens</Text>
                         <Ionicons name="information-circle-outline" size={24} color={colors.brown} />
                     </View>
+                    <Pressable onPress={() => {navigation.navigate('TokenLog')}}>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                         <Text style={styles.seeAll}>See All</Text>
                         <Ionicons name="chevron-forward-outline" size={24} color={colors.brown} />
                     </View>
+                    </Pressable>
                 </View>
                 <FlatList
                     horizontal={true}
