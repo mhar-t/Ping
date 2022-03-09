@@ -8,7 +8,7 @@ export var DATA2 = [
       plantImageUrl: require('../images/plants/3.png'),
       screenName: 'EmilyGoal',
       profile: require('../images/profile/emily.png'),
-      location: 'Ontario, Canada',
+      location: 'Ontario',
     },
     {
       id: '2',
@@ -19,7 +19,7 @@ export var DATA2 = [
       plantImageUrl: require('../images/plants/4.png'),
       screenName: 'BryanGoal',
       profile: require('../images/profile/bryan.jpg'),
-      location: 'Jakarta, Indonesia'
+      location: 'Jakarta'
     },
 
     {
@@ -31,6 +31,6 @@ export var DATA2 = [
       plantImageUrl: require('../images/plants/4.png'),
       screenName: 'PabloGoal',
       profile: require('../images/profile/pablo.jpg'),
-      location: 'Chicago, IL, USA'
+      location: 'Chicago'
     },
   ]; 

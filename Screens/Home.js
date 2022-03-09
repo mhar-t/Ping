@@ -6,6 +6,7 @@ import MomentsLog from './Additional screens/MomentsLog';
 import MomentChooseProcess from './Additional screens/MomentChooseProcess';
 import MomentUnrequited from './Additional screens/MomentUnrequited';
 import MomentConfirmationPage from './Additional screens/MomentConfirmationPage';
+import TokenLog from './Additional screens/TokenLog';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default function HomeStack({}) {
     <Stack.Screen name="HomeScreen" component={HomeScreen} />
     <Stack.Screen name="Profile" component={Profile} />
 
+    {/*Moments*/}
     <Stack.Screen name="MharSharedMoment" component={SharedMoment} />
     <Stack.Screen name="MomentsLog" component={MomentsLog} />
 
@@ -57,6 +59,9 @@ export default function HomeStack({}) {
 
 
     <Stack.Screen name="MharMomentHomeScreenConfirm" component={MomentConfirmationPage} options={{ cardStyleInterpolator: forFade }}/>
+
+    {/*Tokens*/}
+    <Stack.Screen name="TokenLog" component={TokenLog} />
     
   </Stack.Navigator>
     );

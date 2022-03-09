@@ -29,7 +29,7 @@ export default function GoalsHome({}) {
       plantImageUrl: require('../assets/images/plants/1.png'),
       screenName: 'JamesGoal',
       profile: require('../assets/images/profile/james.jpg'),
-      location: 'Palo Alto, CA',}];
+      location: 'Palo Alto',}];
       setGoals(newArray);
 }
 
@@ -42,7 +42,7 @@ export default function GoalsHome({}) {
     plantImageUrl: require('../assets/images/plants/1.png'),
     screenName: 'MorganGoal',
     profile: require('../assets/images/profile/morgan.jpg'),
-    location: 'Palo Alto, CA',}];
+    location: 'Palo Alto',}];
     setGoals(newArray);
   }
 
@@ -55,7 +55,7 @@ export default function GoalsHome({}) {
     plantImageUrl: require('../assets/images/plants/1.png'),
     screenName: 'MTLGoal',
     profile: require('../assets/images/profile/mtl.jpg'),
-    location: 'Palo Alto, CA',}];
+    location: 'Palo Alto',}];
     setGoals(newArray);
   }
 
