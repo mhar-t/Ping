@@ -11,7 +11,6 @@ import { backgroundColor, borderLeftColor, color } from 'react-native/Libraries/
 import { DATA2 } from '../assets/goals/goals2';
 import React, { useState } from 'react';
 import { Button } from 'react-native-web';
-import NumberPlease from 'react-native-number-please';
 
 
 
