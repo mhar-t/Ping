@@ -47,6 +47,23 @@ export default function SingleGoal({ id, name, goalNumber, morning, time, plantI
             </View>
             </Pressable>
         )
+    } else {
+        return (
+          <Pressable onPress={() => {navigation.navigate(screenName, {
+              goal: {id, name, goalNumber, morning, time, plantImageUrl, screenName, profile, location}
+            })}}>
+          <View style={styles.plant}>
+              <View style={{height: 150, width: '100%', backgroundColor: colors.purple, borderTopLeftRadius: 24, borderTopRightRadius: 24, }}>
+                  <View style={{display: 'flex', flexDirection: 'row',  margin: 16, }}>
+                      <Text style={styles.plantName}>{name}</Text>
+                      <Ionicons name="moon-outline" size={24} color={colors.white}  />
+                  </View>
+                  <Text style={styles.plantSubheading}>{time}</Text>
+                  <Image source={plantImageUrl} style={{resizeMode: 'contain', width: 134, height: 200, alignSelf: 'center', bottom: 40 }}/> 
+              </View>
+          </View>
+          </Pressable>
+      )
     }
 }
 
