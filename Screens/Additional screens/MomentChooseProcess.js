@@ -49,7 +49,7 @@ export default function MomentChooseProcess({}) {
                 <View style={styles.singleBox}>
                 </View>
             </View>
-            <Text style={styles.subheading3}>Water these goals this week</Text>
+            <Text style={styles.subheading3}>Water your goals with these friends: </Text>
             <View style={styles.whitebox}>
                 <Pressable onPress={() => navigation.navigate('AdaMoment', {name: 'Ada', profile: require('../../assets/images/profile/ada.png'), time: '6:48 PM', location: 'Chicago, IL, USA', type: 0})}>
 
