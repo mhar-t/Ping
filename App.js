@@ -55,7 +55,7 @@ export default function App() {
             component={OnboardingScreens}
             options={{headerShown: false}}
             />
-            <Stack.Screen name="Home" component={BottomTabs} options={{headerShown: false}}/>
+            <Stack.Screen name="Tabs" component={BottomTabs} options={{headerShown: false}}/>
         </Stack.Navigator>
     </NavigationContainer>
   );

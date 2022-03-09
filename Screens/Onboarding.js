@@ -8,8 +8,8 @@ import { NavigationContainer } from '@react-navigation/native';
 export default function OnboardingScreens({navigation}) {
     return ( <
             Onboarding 
-                onDone = {() => navigation.navigate("Home")}
-                onSkip = {() => navigation.navigate("Home")}
+                onDone = {() => navigation.navigate("Tabs")}
+                onSkip = {() => navigation.navigate("Tabs")}
                 titleStyles={{fontSize: 24, fontWeight: 'bold',}}
                 subTitleStyles={{fontSize: 18, marginLeft: 10, marginRight: 10}}
             pages = { 
