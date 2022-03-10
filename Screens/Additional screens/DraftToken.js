@@ -23,6 +23,8 @@ export default function DraftToken({}) {
     // TODO ^^ REPLACE WITH PROPS !!!! 
     // TODO: FONT STYLE 
 
+    //TODO --> SCHEDULE AND SEND BUTTONS!!
+
     return(
         <View style={styles.main}>
             <View style={styles.header}>
