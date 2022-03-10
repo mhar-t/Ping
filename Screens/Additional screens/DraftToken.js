@@ -18,6 +18,11 @@ export default function DraftToken({}) {
     const navigation = useNavigation();
 
 
+    //HARD CODED MORGAN'S NAME AND TIME
+    // HARD CODED LAST TOKEN
+    // TODO ^^ REPLACE WITH PROPS !!!! 
+    // TODO: FONT STYLE 
+
     return(
         <View style={styles.main}>
             <View style={styles.header}>
@@ -34,15 +39,27 @@ export default function DraftToken({}) {
             </View>
             
             <View style={styles.body}>
-                <View style={styles.lastToken}>
-                    
+                <View style={styles.friend}>
+                    <View>
+                        <Image source={require('../../assets/images/profile/morgan.jpg')} style={styles.profile}></Image>
+                    </View>
+                    <View style={styles.friendInfo}> 
+                        <Text style={{fontWeight: 'bold', fontSize: 16}}>Morgan</Text>   
+                        <Text style={{fontSize: 16, marginTop: 3}}>Palo Alto, 4:48 pm</Text>
+                    </View> 
+                    <View style={{paddingLeft: 40, alignItems: 'center', justifyContent: 'center'}}>
+                        <Text>🍕🌺</Text>
+                        <Text style={{fontSize: 16, paddingTop: 5}}>Last Token</Text>
+                    </View>
                 </View>
                 <View style={styles.promptContainer}>
                     <View style={styles.prompt}>
-                        <Image source={require('../../assets/icons/generate.png')} style={{width: 40, height: 40}}/>
+                        <Pressable>
+                            <Image source={require('../../assets/icons/generate.png')} style={{width: 45, height: 45}}/>
+                        </Pressable>
                         <View style={styles.promptText}>
-                            <Text style={{fontSize: 15}}>Not sure what to send? Here's an idea:</Text>
-                            <Text style={{fontWeight: 'bold', fontSize: 14}}>What is your favorite memory with this friend?</Text>
+                            <Text style={{fontSize: 16}}>Not sure what to send? Here's an idea:</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 15}}>What are you looking forward to?</Text>
                         </View> 
                     </View>
                 </View>
@@ -108,9 +125,24 @@ const styles = StyleSheet.create({
         flex: 15
     },
 
-    lastToken: {
+    friend: {
         flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
         //backgroundColor: 'blue'
+    },
+
+    friendInfo:{
+        paddingRight: 40, 
+        paddingLeft: 10, 
+        alignItems: 'baseline'
+    }, 
+
+    profile: {
+        width: 60,
+        height: 60,
+        borderRadius: 60/2,
     },
     promptContainer: {
         flex: 3,
