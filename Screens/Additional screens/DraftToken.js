@@ -74,8 +74,13 @@ export default function DraftToken({}) {
                         />
                     </View> 
                 </View>
-                <View style={styles.send}>
-                    
+                <View style={styles.sendContainer}>
+                    <View style={styles.schedule}>
+                        <Text style={{fontSize: 16}}>Schedule</Text>
+                    </View>
+                    <View style={styles.send}>
+                        <Text style={{fontSize: 16}}>Send Now</Text>
+                    </View>
                 </View>
                 <View style={styles.bottom}></View>
             </View> 
@@ -193,14 +198,49 @@ const styles = StyleSheet.create({
     text:{
         fontSize: 42
     },
-    send:{
+    sendContainer:{
         flex: 2,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center', 
         //backgroundColor: 'yellow'
 
     },
+
+    schedule:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: colors.black,
+        borderWidth: 1,
+        height: '40%',
+        width: '30%',
+        backgroundColor: colors.cream,
+        borderRadius: 15, 
+
+
+        shadowColor: "#292929",
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: { width: -1, height: 5 },
+    },
+    send:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.lightpink,
+        height: '40%',
+        width: '40%',
+        borderRadius: 15,
+        borderColor: colors.black,
+        borderWidth: 1,
+
+
+        shadowColor: "#292929",
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: { width: -1, height: 5 },
+    },
     bottom: {
-        flex: 2,
-        //backgroundColor: 'white'
+        flex: 1,
     }
 
 
