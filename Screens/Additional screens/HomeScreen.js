@@ -129,10 +129,12 @@ export default function HomeScreen({}) {
                     showsHorizontalScrollIndicator={false}
                     ListHeaderComponent={<View style={{marginLeft:32}}></View>}
                 />
-                <View style={styles.pinkbutton}>
-                    <Image source={require('../../assets/icons/tokensend.png')} style={styles.icon2}/>
-                    <Text style={styles.buttonText}>Send Token</Text>
-                </View>      
+                <Pressable onPress={() => {navigation.navigate('DraftToken')}}>
+                    <View style={styles.pinkbutton}>
+                        <Image source={require('../../assets/icons/tokensend.png')} style={styles.icon2}/>
+                        <Text style={styles.buttonText}>Send Token</Text>
+                    </View>  
+                </Pressable>    
             </View>
         </View>
     );
