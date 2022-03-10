@@ -7,6 +7,7 @@ import MomentChooseProcess from './Additional screens/MomentChooseProcess';
 import MomentUnrequited from './Additional screens/MomentUnrequited';
 import MomentConfirmationPage from './Additional screens/MomentConfirmationPage';
 import TokenLog from './Additional screens/TokenLog';
+import DraftToken from './Additional screens/DraftToken'
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,7 @@ export default function HomeStack({}) {
 
     {/*Tokens*/}
     <Stack.Screen name="TokenLog" component={TokenLog} />
+    <Stack.Screen name="DraftToken" component={DraftToken} />
     
   </Stack.Navigator>
     );

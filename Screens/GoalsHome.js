@@ -84,7 +84,7 @@ export default function GoalsHome({}) {
                     </Pressable>
                 </View>
             </View>
-            <Text style={styles.subheading}>In the garden of goals, you can view, set and edit the connections you have with your friends.</Text>
+            <Text style={styles.subheading}>View, set and edit the connection goals you have with your friends.</Text>
         <SearchBar />
         
         
@@ -126,11 +126,13 @@ export default function GoalsHome({}) {
 
     subheading: {
       marginLeft: 24, 
+      marginRight: 24, 
       marginTop: 24,
       marginBottom: 0, 
       fontSize: 14, 
       color: colors.brown, 
       fontWeight: '600'
+      
     },
 
     subheading2: {
