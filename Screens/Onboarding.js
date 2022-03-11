@@ -11,7 +11,7 @@ export default function OnboardingScreens({navigation}) {
                 onDone = {() => navigation.navigate("Tabs")}
                 onSkip = {() => navigation.navigate("Tabs")}
                 titleStyles={{fontSize: 24, fontWeight: 'bold',}}
-                subTitleStyles={{fontSize: 18, marginLeft: 10, marginRight: 10}}
+                subTitleStyles={{fontSize: 20, marginLeft: 10, marginRight: 10}}
             pages = { 
                 [{
                         backgroundColor: colors.background,
@@ -21,7 +21,7 @@ export default function OnboardingScreens({navigation}) {
                         subtitle: 'Make inside jokes or share what\'s going on in your life with your loved ones',
                     },
                     {
-                        backgroundColor: colors.background,
+                        backgroundColor: colors.lightpink,
                         image: < Image source = { require('../assets/onboarding/moments.png') }
                         />,
                         title: 'Create Moments',

@@ -7,6 +7,7 @@ import HomeStack from './Screens/Home';
 import FriendList from './Screens/FriendsList';
 import Goals from './Screens/Goals';
 import Colors from './Themes/Colors';
+import { LogBox } from 'react-native';
 
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,7 +19,7 @@ const Tab = createBottomTabNavigator();
 
 
 export default function App() {
-
+  LogBox.ignoreAllLogs();
     function BottomTabs() {
         return (
             <Tab.Navigator screenOptions={({ route }) => ({

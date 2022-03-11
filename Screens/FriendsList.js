@@ -6,15 +6,15 @@ import colors from '../Themes/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SearchBar from '../Components/searchbar';
-import { DATA5 } from '../assets/moments/moment2';  // TODO -- FIX DATA -- create new data file for friend list
-import FriendMoment from '../Components/FriendMoment'; // TODO FIX
+import { FRIENDS } from '../assets/friends/friends';  
+import FriendListComp from '../Components/FriendListComp'; 
 
 
 export default function FriendList({}) {
   const navigation = useNavigation();
 
   const renderItem = (item) => (
-      <FriendMoment
+      <FriendListComp
         name={item.name}
         id={item.id}
         profile={item.profile}
@@ -53,7 +53,6 @@ export default function FriendList({}) {
         <Text style={styles.subheading3}>Water your goals with these friends: </Text>
         <View style={styles.whitebox}>
             <Pressable >
-
             <View style={styles.singleBox}>
                 <View style={styles.shadows}>
                 <Image source={require('../assets/images/profile/ada.png')} style={styles.profile}></Image>
@@ -89,21 +88,18 @@ export default function FriendList({}) {
     <View style={{backgroundColor: colors.background, width: '100%', height: '100%'}}>
         <View style={styles.header}>
             <View style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'row', padding: 24, marginTop: 40, alignContent: 'center', justifyContent: 'space-between'}}>
-                <Pressable onPress={() => navigation.goBack()} style={{marginTop: 6}}>
-                    <Ionicons name="arrow-back-outline" size={32} color={colors.black}  />
-                </Pressable>
+                <View style={{width: 36, height: 36}}></View>
                 <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                 <Ionicons name='people-circle-outline' size={32} color={colors.darkpink}  />
-
                     <Text style={styles.subheading}>Your Loved Ones</Text>
                 </View>
-                <View style={{width: 40, height: 40}}></View>
+                <Ionicons name="add-circle" size={36} color={colors.brown} />
             </View>
         </View>
         <SearchBar></SearchBar>
         <FlatList
             ListHeaderComponent={headerComp()}
-            data={DATA5} 
+            data={FRIENDS} 
             renderItem={({item}) => renderItem(item)} 
             keyExtractor={(item) => item.id} 
       />
