@@ -43,18 +43,18 @@ function screen( name, profile, location, time, number ) {
 
 export default function GoalsAddConfirmation({ route }) {
     
-    const { name } = route.params;
+    const { name, num } = route.params;
     if (name === 'Morgan') {
         return (
-            screen( "Morgan", require('../assets/images/profile/morgan.jpg'), 'Palo Alto, USA', '4:48 PM', '1' )
+            screen( "Morgan", require('../assets/images/profile/morgan.jpg'), 'Palo Alto, USA', '4:48 PM', num )
         )
     } else if (name === 'James') {
         return (
-            screen( "James", require('../assets/images/profile/james.jpg'), 'Palo Alto, USA', '4:48 PM', '1' )
+            screen( "James", require('../assets/images/profile/james.jpg'), 'Palo Alto, USA', '4:48 PM', num )
         )
     } else {
         return (
-            screen( "MTL", require('../assets/images/profile/mtl.jpg'), 'Palo Alto, USA', '4:48 PM', '1' )
+            screen( "MTL", require('../assets/images/profile/mtl.jpg'), 'Palo Alto, USA', '4:48 PM', num )
         )
     }
 }

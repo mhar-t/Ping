@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,6 +11,7 @@ import { backgroundColor, borderLeftColor, color } from 'react-native/Libraries/
 import { DATA2 } from '../assets/goals/goals2';
 import React, { useState } from 'react';
 import { Button } from 'react-native-web';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 
@@ -18,10 +19,12 @@ export default function GoalsAddProcess({ route }) {
     const navigation = useNavigation();
     const {name, profile, addElement} = route.params;
 
-  function two(name) {
+  function two(name, num) {
       addElement();
-      navigation.navigate(name + 'GoalAddConfirmation', {name});
+      navigation.navigate(name + 'GoalAddConfirmation', {name, num});
   }
+
+  var numInput = '1'
 
     return (
         <View style={styles.container}>
@@ -41,8 +44,16 @@ export default function GoalsAddProcess({ route }) {
             <Text style={styles.subheading}>Set Connection Goal</Text>
                     <View style={{display: 'flex', flexDirection: 'row',width: 348, height: 80, alignSelf: 'center', justifyContent: 'center', marginTop: 8, marginLeft: 24}}>
                         <View style={{backgroundColor: colors.purewhite, width: 132, height: 57, marginTop: 16, borderRadius: 8, shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset }}>
-                            <Text style={{color: colors.black, fontWeight: 'bold', fontSize: 24, textAlign: 'right', marginTop: 12, marginRight: 48}}>1</Text> 
                             
+                            <TextInput
+                        placeholder="1"
+                        maxLength={1}
+                        style={styles.num}
+                        keyboardType='number-pad'
+                        placeholderTextColor='black'
+                        returnKeyType={ 'done' }
+                        onChangeText={(text) => numInput = text}
+                        />
                             <View style={{display: 'flex', flexDirection: 'column', width: 36, height: '100%', bottom: 38, left: 104}}>
                                 <Ionicons name="caret-up-outline" size={24} color={colors.black} />
                                 <Ionicons name="caret-down-outline" size={24} color={colors.black} />
@@ -68,7 +79,7 @@ export default function GoalsAddProcess({ route }) {
                                 <Text style={styles.buttonText}>Cancel</Text>
                             </View>
                         </Pressable>
-                        <Pressable onPress={() => {two(name)}}>
+                        <Pressable onPress={() => {two(name, numInput)}}>
                             <View style={styles.buttonPink}>
                                 <Text style={styles.buttonText}>Confirm</Text>
                             </View>
@@ -197,4 +208,8 @@ const styles = StyleSheet.create({
         fontSize: 13,
         marginLeft: 16,
     },
+
+    num: {
+        color: colors.black, fontWeight: 'bold', fontSize: 24, textAlign: 'right', marginTop: 12, marginRight: 48
+    }
   });

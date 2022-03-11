@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, Image, TextInput, Button} from 'react-native'; 
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import DatePicker from 'react-native-date-picker'
 //import DateTimePicker from '@react-native-community/datetimepicker';
 
 //import DatePicker from 'react-native-date-picker'
 
-import Modal from "react-native-modal";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -25,7 +26,28 @@ export default function DraftToken({route}) {
     const navigation = useNavigation();
     const {name, profile, time, location} = route.params; 
 
+    var emojiInput = '';
 
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        date = JSON.stringify(date)
+        var monthyear = date.slice(1, 11)
+        var hour = date.slice(12, 17)
+        
+        navigation.navigate('TokenScheduleConfirmation', {name, profile, time, location, emojiInput, monthyear, hour})
+        hideDatePicker()
+      };
+
+    
 
     return(
         <View style={styles.main}>
@@ -44,14 +66,18 @@ export default function DraftToken({route}) {
             
             <View style={styles.body}>
                 <View style={styles.friend}>
-                    {/* <View>
-                        <Image source={require({profile})} style={styles.profile}></Image>
-                    </View> */}
-                    <View style={styles.friendInfo}> 
-                        <Text style={{fontWeight: 'bold', fontSize: 16}}>To: {name}</Text>   
-                        <Text style={{fontSize: 16, marginTop: 3}}>{location}, {time}</Text>
-                    </View> 
-                    <View style={{paddingLeft: 80, alignItems: 'center', justifyContent: 'center'}}>
+                    <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                        <View style={{shadowOpacity: 0.1,
+        shadowRadius: 3,
+        shadowOffset: { width: -1, height: 5 },}}>
+                        <Image source={profile} style={styles.profilePic}></Image>
+                        </View>
+                        <View style={styles.friendInfo}> 
+                            <Text style={{fontWeight: 'bold', fontSize: 16}}>To: {name}</Text>   
+                            <Text style={{fontSize: 16, marginTop: 3}}>{location}, {time}</Text>
+                        </View> 
+                    </View>
+                    <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <Text style={{fontSize: 22}}>🍕🌺</Text>
                         <Text style={{fontSize: 16, paddingTop: 5}}>Last Token</Text>
                     </View>
@@ -73,6 +99,7 @@ export default function DraftToken({route}) {
                         placeholder="Type up to 5 emojis..."
                         maxLength={5}
                         style={styles.text}
+                        onChangeText={(text) => emojiInput = text}
                         />
                     </View> 
                 </View>
@@ -80,11 +107,19 @@ export default function DraftToken({route}) {
                 <View style={styles.sendContainer}>
 
 
-                    <Pressable  style={styles.schedule}>
-                        <Text style={{fontSize: 18}}>Schedule</Text>
+                    <Pressable  style={styles.schedule} onPress={showDatePicker}>
+                        <Text style={styles.buttonText}>Schedule</Text>
+                        <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="datetime"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        display="inline"
+        
+      />
                     </Pressable>
-                    <Pressable style={styles.send} onPress={() => navigation.navigate('TokenLog')}>
-                        <Text style={{fontSize: 18}}>Send Now</Text>
+                    <Pressable style={styles.send} onPress={() => navigation.navigate('TokenConfirmation', {name: name, profile: profile, time: time, location: location, emoji: emojiInput })}>
+                        <Text style={styles.buttonText}>Send Now</Text>
                     </Pressable>
                 </View>
                 <View style={styles.bottom}></View>
@@ -141,7 +176,7 @@ const styles = StyleSheet.create({
         flex: 2,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-evenly'
         //backgroundColor: 'blue'
     },
 
@@ -151,10 +186,11 @@ const styles = StyleSheet.create({
         alignItems: 'baseline'
     }, 
 
-    profile: {
+    profilePic: {
         width: 60,
         height: 60,
         borderRadius: 60/2,
+        marginRight: 12
     },
     promptContainer: {
         flex: 3,
@@ -219,34 +255,47 @@ const styles = StyleSheet.create({
         borderColor: colors.black,
         //borderWidth: 1,
         height: '40%',
-        width: '30%',
-        backgroundColor: colors.cream,
+        width: '35%',
+        backgroundColor: colors.background,
         borderRadius: 15, 
 
+        // overflow: "hidden",
+        borderWidth: 2,
+        borderColor: colors.brown,    
 
         shadowColor: "#292929",
         shadowOpacity: 0.2,
         shadowRadius: 5,
         shadowOffset: { width: -1, height: 5 },
+
+        
     },
     send:{
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.darkgreen,
+        backgroundColor: colors.lightpink,
         height: '40%',
-        width: '40%',
+        width: '45%',
         borderRadius: 15,
         borderColor: colors.black,
         //borderWidth: 1,
 
 
         shadowColor: "#292929",
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.5,
         shadowRadius: 5,
         shadowOffset: { width: -1, height: 5 },
     },
     bottom: {
         flex: 2,
+    },
+
+    buttonText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: colors.black,
+        alignSelf: 'center',
+        marginLeft: 8,
     }
 
 

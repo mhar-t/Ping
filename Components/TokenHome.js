@@ -10,22 +10,27 @@ import { useNavigation } from '@react-navigation/native';
 import { backgroundColor, borderLeftColor, color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import React, { useState } from 'react';
 
-export default function TokenHome({ id, name, profile, emoji, desc, desc2, opened }) {
+export default function TokenHome({ id, name, profile, emoji, desc, desc2, opened, loc }) {
+    const navigation = useNavigation();
+    
     function notopened() {
         return (
-            <View style={styles.container}>
-                <View style={standardStyles}>
-                    <Image source={profile} style={styles.profilePicUnopened}></Image>
+            <Pressable onPress={() => navigation.navigate(name + 'Token', {id: id, name: name, profile: profile, emoji: emoji, desc: desc, desc2: desc2, opened: opened, loc: loc})}>
+                <View style={styles.container}>
+                    <View style={standardStyles}>
+                        <Image source={profile} style={styles.profilePicUnopened}></Image>
+                    </View>
+                    <Text style={styles.from}>From</Text>
+                    <Text style={styles.nameText}>{name}</Text>
+                    <Text style={styles.descText}>{desc2}</Text>
                 </View>
-                <Text style={styles.from}>From</Text>
-                <Text style={styles.nameText}>{name}</Text>
-                <Text style={styles.descText}>{desc2}</Text>
-            </View>
+            </Pressable>
         )
     }
 
     function yesopened() {
         return (
+            <Pressable onPress={() => navigation.navigate(name + 'Token', {id, name, profile, emoji, desc, desc2, opened, loc})}>
             <View style={styles.container}>
                 <View style={standardStyles}>
                     <Image source={profile} style={styles.profilePicOpened}></Image>
@@ -36,6 +41,7 @@ export default function TokenHome({ id, name, profile, emoji, desc, desc2, opene
                     <Ionicons name="arrow-undo" size={28} color={colors.black} />
                 </View>
             </View>
+            </Pressable>
         )
 
     }

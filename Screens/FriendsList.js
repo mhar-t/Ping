@@ -93,7 +93,7 @@ export default function FriendList({}) {
                 <Ionicons name='people-circle-outline' size={32} color={colors.darkpink}  />
                     <Text style={styles.subheading}>Your Loved Ones</Text>
                 </View>
-                <Ionicons name="add-circle" size={36} color={colors.brown} />
+                <Ionicons name="add-circle" size={40} color={colors.brown} />
             </View>
         </View>
         <SearchBar></SearchBar>

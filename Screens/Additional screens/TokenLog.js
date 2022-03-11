@@ -12,6 +12,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { NavigationContainer } from '@react-navigation/native';
 import { DATA6 } from '../../assets/tokens/token2sent';
 import { DATA7 } from '../../assets/tokens/token3saved';
+import TokenFullScreen from '../../Components/TokenFullScreen';
+import { createStackNavigator } from '@react-navigation/stack';
 
 
 const MyTheme = {
@@ -25,6 +27,8 @@ const MyTheme = {
     },
   };
 
+  const Stack = createStackNavigator();
+
 function Received() {
     const renderItem = (item) => (
         <TokenLogUnopened
@@ -34,7 +38,8 @@ function Received() {
             emoji={item.emoji}
             desc={item.desc}
             desc2={item.desc2}
-            opened={item.opened}/>
+            opened={item.opened}
+            loc={item.loc}/>
       );
 
       const renderItem2 = (item) => (
@@ -45,25 +50,41 @@ function Received() {
             emoji={item.emoji}
             desc={item.desc}
             desc2={item.desc2}
-            opened={item.opened}/>
+            opened={item.opened}
+            loc={item.loc}/>
       );
+
+      function ReceivedHome() {
+            return(
+            <View style={styles.box}>
+                <Text style={styles.thisWeek}>Unopened Tokens</Text> 
+                <FlatList
+                        data={DATA3} 
+                        renderItem={({item}) => renderItem(item)} 
+                        keyExtractor={(item) => item.id} 
+                        //inverted
+                        horizontal
+                />
+                <Text style={styles.thisWeek}>Opened Tokens</Text> 
+                <FlatList
+                        data={DATA3} 
+                        renderItem={({item}) => renderItem2(item)} 
+                        keyExtractor={(item) => item.id} 
+                />
+                </View>
+                )
+      }
     return (
-        <View style={styles.box}>
-            <Text style={styles.thisWeek}>Unopened Tokens</Text> 
-            <FlatList
-                    data={DATA3} 
-                    renderItem={({item}) => renderItem(item)} 
-                    keyExtractor={(item) => item.id} 
-                    //inverted
-                    horizontal
-            />
-            <Text style={styles.thisWeek}>Opened Tokens</Text> 
-            <FlatList
-                    data={DATA3} 
-                    renderItem={({item}) => renderItem2(item)} 
-                    keyExtractor={(item) => item.id} 
-            />
-          </View>
+        
+            <Stack.Navigator
+          screenOptions= {() => ({
+            headerShown: false,
+          })}> 
+          <Stack.Screen name="ReceivedHome" component={ReceivedHome} />
+          <Stack.Screen name="EmilyToken" component={TokenFullScreen} />
+          <Stack.Screen name="AdaToken" component={TokenFullScreen} />
+          <Stack.Screen name="BryanToken" component={TokenFullScreen} />
+          <Stack.Screen name="KristinaToken" component={TokenFullScreen} /></Stack.Navigator>          
     )
 }
 
@@ -130,6 +151,7 @@ function Saved() {
 
 const Tab = createMaterialTopTabNavigator();
 
+
 export default function TokenLog({}) {
     const navigation = useNavigation();
 
@@ -146,6 +168,7 @@ export default function TokenLog({}) {
                 </Pressable>
                 )
     }
+
 
     return (
         <View style={{backgroundColor: colors.background, width: '100%', height: '100%'}}>
@@ -169,7 +192,6 @@ export default function TokenLog({}) {
                 </Tab.Navigator>
                
             </NavigationContainer>
-            
         </View>
     );
 }

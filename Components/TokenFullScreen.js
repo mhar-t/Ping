@@ -12,20 +12,32 @@ import { borderLeftColor } from 'react-native/Libraries/Components/View/ReactNat
 import GoalsEdit from '../Screens/GoalsEdit';
 
 
-export default function TokenFullScreen({ }) {
+export default function TokenFullScreen({ route }) {
     const navigation = useNavigation();
     // const {token} = route.params;
     // Data3
-    const emoji = '🙊⛷🙊'; //emoji
-    const receivedTime = '11:45 am'; //desc2
-    const senderName = 'Emily'; //name
-    const senderLoc = 'Palo Alto, CA'; //not an option??
-    const profile = require('../assets/images/profile/emily.png'); //profile
+    //const emoji = emoji; emoji
+    const {id, name, profile, emoji, desc, desc2, opened, loc} = route.params;
+    const receivedTime = desc2; //desc2
+    const senderName = name; //name
+    const senderLoc = loc; //not an option??
+    //const profile = require('../assets/images/profile/emily.png'); 
+
+    var time = ''
+
+    if (name == 'Emily') {
+        time = '9:48 AM'
+    } else if (name == 'Ada') {
+        time = '6:48 PM'
+    } else if (name == 'Bryan') {
+        time = '5:48 PM'
+    } else {
+        time = '7:48 PM'
+    }
 
     return (
-        <View style={{height: '100%', width: '100%', backgroundColor: colors.cream, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, }}>
-            
-            <View style={{height: '50%', width: '100%', backgroundColor: colors.purewhite, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, }}>
+        <View style={{height: '100%', width: '100%', backgroundColor: colors.background, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, }}>
+            <View style={{height: '50%', width: '100%', backgroundColor: colors.purewhite, borderBottomLeftRadius: 24, borderBottomRightRadius: 24, shadowColor: colors.black, shadowOpacity: 0.2, shadowRadius: 4, shadowOffset: { width: -1, height:  5}, }}>
                 <View style={{height: '10%', width:'100%', marginLeft: 36, marginTop: 8 + 32}}>
                     <Pressable onPress={() => navigation.goBack()}>
                         <Ionicons name="arrow-back-outline" size={36} color={colors.black} />
@@ -39,7 +51,7 @@ export default function TokenFullScreen({ }) {
             </View>
 
             <View >
-                <Text style={{alignSelf: 'flex-end', fontSize: 15, marginRight: 36, marginTop: 8}}> Received {receivedTime}</Text>
+                <Text style={{alignSelf: 'flex-end', fontSize: 15, marginRight: 36, marginTop: 16}}> Received {receivedTime}</Text>
             </View>
             
             <View style={{display: 'flex', flexDirection: 'row',  marginLeft: 36 }}>
@@ -47,7 +59,7 @@ export default function TokenFullScreen({ }) {
                     <Image source={profile} style={styles.profileImage}/> 
                 </View>
                 <View style={styles.senderInfo}>
-                    <Text style={{fontSize: 18}}>From</Text>
+                    <Text style={{fontSize: 24, left: 4}}>From</Text>
                     <Text style={styles.name}>{senderName}</Text>
                     <Text style={styles.subHeading}>{senderLoc}</Text>
                 </View>
@@ -58,9 +70,10 @@ export default function TokenFullScreen({ }) {
                             <Ionicons name="bookmark-outline" size={32} color={colors.black} />
                             </View>
                         </Pressable>
-                        <Pressable onPress={() => {two(name)}}>
+                        <Pressable onPress={() => navigation.navigate('DraftToken', {name: name, profile: profile, time: time, location: loc})}>
                             <View style={styles.buttonPink}>
-                                <Text style={styles.buttonText}>Send Emily Token</Text>
+                                <Image source={require('../assets/icons/tokensend.png')} style={styles.icon2}/>
+                                <Text style={styles.buttonText}>Send {name} Token</Text>
                             </View>
                         </Pressable>
                 </View>
@@ -92,7 +105,7 @@ const styles = StyleSheet.create({
     },
 
     emojiText: {
-        fontSize: 86,
+        fontSize: 100,
         alignSelf: 'center'
     },
     profileImage: {
@@ -103,6 +116,9 @@ const styles = StyleSheet.create({
         borderRadius: 160/2,
         marginLeft: 12,
         marginTop: 50,
+        overflow: "hidden",
+        borderWidth: 5,
+        borderColor: colors.darkpink,
       },
     senderInfo: {
         marginLeft: 32,
@@ -112,7 +128,7 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        fontSize: 60,
+        fontSize: 48,
         fontWeight: 'bold',
         color: colors.black, 
         // marginLeft: 0,
@@ -142,6 +158,10 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: colors.lightpink,
         borderRadius: 12,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
         shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset
     },
   
@@ -150,7 +170,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: colors.black,
         alignSelf: 'center',
-        top: 16
+        left: 4
+        //top: 16
       },
+
+      icon2: {
+        width: 32,
+        height: 32,
+        resizeMode: 'contain',
+        alignSelf: 'center'
+         
+    },
 
 });

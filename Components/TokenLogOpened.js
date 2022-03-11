@@ -3,9 +3,13 @@ import { useNavigation } from '@react-navigation/native';
 import colors from '../Themes/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function TokenLogOpened({id, name, profile, emoji, desc, desc2, opened}) {
+export default function TokenLogOpened({id, name, profile, emoji, desc, desc2, opened, loc}) {
+    const navigation = useNavigation();
+
     if (opened == 1) {
         return (
+            <Pressable onPress={() => navigation.navigate(name + 'Token', {id: id, name: name, profile: profile, emoji: emoji, desc: desc, desc2: desc2, opened: opened, loc: loc})}>
+
             <View style={styles.boxUnread}>
                 <View style={{display: 'flex', flexDirection: 'row', width: '100%', height: '100%'}}>
                     <View style={styles.imageBox}>
@@ -27,6 +31,7 @@ export default function TokenLogOpened({id, name, profile, emoji, desc, desc2, o
                     </View>
                 </View>
             </View>
+            </Pressable>
         )
     } else {
         return (

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -65,7 +65,15 @@ export default function GoalsEdit({ route }) {
                     <Text style={styles.subheading}>Edit Connection Goal</Text>
                     <View style={{display: 'flex', flexDirection: 'row',width: 348, height: 80, alignSelf: 'center', justifyContent: 'center', marginTop: 8, marginLeft: 24}}>
                         <View style={{backgroundColor: colors.purewhite, width: 132, height: 57, marginTop: 16, borderRadius: 8, shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset }}>
-                            <Text style={{color: colors.black, fontWeight: 'bold', fontSize: 24, textAlign: 'right', marginTop: 12, marginRight: 48}}>{goal.goalNumber}</Text> 
+                            <TextInput
+                        placeholder={goal.goalNumber}
+                        maxLength={1}
+                        style={styles.num}
+                        keyboardType='number-pad'
+                        placeholderTextColor='black'
+                        returnKeyType={ 'done' }
+                       
+                        />
                             <View style={{display: 'flex', flexDirection: 'column', width: 36, height: '100%', bottom: 38, left: 104}}>
                                 <Ionicons name="caret-up-outline" size={24} color={colors.black} />
                                 <Ionicons name="caret-down-outline" size={24} color={colors.black} />
@@ -212,5 +220,9 @@ const styles=StyleSheet.create({
       thumbnail: {
         display: 'flex', flexDirection: 'column', width: 348, height: 300, alignSelf: 'center',backgroundColor: colors.darkgreen, marginTop: 24, borderRadius: 24,
         shadowColor: standardStyles.shadowColor, shadowOpacity: standardStyles.shadowOpacity, shadowRadius: standardStyles.shadowRadius, shadowOffset: standardStyles.shadowOffset
+      },
+
+      num: {
+        color: colors.black, fontWeight: 'bold', fontSize: 24, textAlign: 'right', marginTop: 12, marginRight: 48
       }
 })

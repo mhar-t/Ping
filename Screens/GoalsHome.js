@@ -77,10 +77,13 @@ export default function GoalsHome({}) {
       <View style={{backgroundColor: colors.background, width: '100%', height: '100%'}}>
         <View style={styles.header}>
                 <View style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'row', padding: 24, marginTop: 40, alignContent: 'center', justifyContent: 'space-between'}}>
-                    <View></View>
+                    <View style={{width: 20, height: 20}}></View>
+                    <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                <Ionicons name='leaf' size={32} color={colors.darkgreen}  />
                     <Text style={styles.headerText}>Garden of Goals</Text>
+                    </View>
                     <Pressable onPress={() => {navigation.navigate("GoalsAdd", { addElementJames: addElementJames, addElementMorgan: addElementMorgan, addElementMTL: addElementMTL })}}>
-                      <Ionicons name="add-circle" size={36} color={colors.darkgreen} />
+                      <Ionicons name="add-circle" size={40} color={colors.brown} />
                     </Pressable>
                 </View>
             </View>
@@ -182,6 +185,6 @@ export default function GoalsHome({}) {
         fontWeight: 'bold',
         alignSelf: 'center',
         textAlign: 'center',
-        marginLeft: 32
+        marginLeft: 8
     },
   });

@@ -27,7 +27,8 @@ export default function HomeScreen({}) {
           emoji={item.emoji}
           desc={item.desc}
           desc2={item.desc2}
-          opened={item.opened}/>
+          opened={item.opened}
+          loc={item.loc}/>
       );
 
       const renderItem2 = (item) => (
@@ -94,9 +95,9 @@ export default function HomeScreen({}) {
             <View style={styles.header}>
                 <View style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'row', padding: 24, marginTop: 40, alignContent: 'center', justifyContent: 'space-between'}}>
                     <View></View>
-                    <Text style={styles.headerText}>Ping</Text>
+                    <Image source={require('../../assets/icons/ping.png')} style={styles.logo}></Image>
                     <Pressable onPress={() => navigation.navigate('Profile')}>
-                        <Ionicons name="person-circle" size={36} color={colors.brown} />
+                        <Ionicons name="person-circle" size={40} color={colors.brown} />
                     </Pressable>
                 </View>
             </View>
@@ -331,5 +332,13 @@ const styles = StyleSheet.create({
         color: colors.black,
         alignSelf: 'center',
         marginLeft: 8,
+    }, 
+    
+    logo: {
+        width: 72,
+        height: 80,
+        resizeMode: 'contain',
+        top: -20,
+        left: 20
     }
   });

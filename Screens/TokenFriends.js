@@ -8,13 +8,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SearchBar from '../Components/searchbar';
 import { FRIENDS } from '../assets/friends/friends';  
 import FriendListComp from '../Components/FriendListComp'; 
+import FriendToken from '../Components/FriendToken';
 
 
 export default function FriendList({}) {
   const navigation = useNavigation();
 
   const renderItem = (item) => (
-      <FriendListComp
+      <FriendToken
         name={item.name}
         id={item.id}
         profile={item.profile}
@@ -29,7 +30,7 @@ export default function FriendList({}) {
         <View>
         <Text style={styles.subheading2}>It's been a while since you've connected with:</Text>
         <View style={styles.whitebox}>
-            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Morgan',  time: '4:48 PM', location: 'Palo Alto'})}>
+            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Morgan', profile: require('../assets/images/profile/morgan.jpg'), time: '4:48 PM', location: 'Palo Alto'})}>
                 <View style={styles.singleBox}>
                     <View style={styles.shadows}>
                     <Image source={require('../assets/images/profile/morgan.jpg')} style={styles.profile}></Image>
@@ -38,7 +39,7 @@ export default function FriendList({}) {
                     <Text style={styles.timeText}>Palo Alto, 4:48 PM</Text>
                 </View>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'James', time: '4:48 PM', location: 'Palo Alto'})}>
+            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'James', profile: require('../assets/images/profile/james.jpg'), time: '4:48 PM', location: 'Palo Alto'})}>
                 <View style={styles.singleBox}>
                     <View style={styles.shadows}>
                     <Image source={require('../assets/images/profile/james.jpg')} style={styles.profile}></Image>
@@ -52,7 +53,7 @@ export default function FriendList({}) {
         </View>
         <Text style={styles.subheading3}>Water your goals with these friends: </Text>
         <View style={styles.whitebox}>
-            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Ada', time: '6:48 PM', location: 'Chicago'})}>
+            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Ada', profile: require('../assets/images/profile/ada.png'), time: '6:48 PM', location: 'Chicago'})}>
             <View style={styles.singleBox}>
                 <View style={styles.shadows}>
                 <Image source={require('../assets/images/profile/ada.png')} style={styles.profile}></Image>
@@ -61,7 +62,7 @@ export default function FriendList({}) {
                 <Text style={styles.timeText}>Chicago, 6:48 PM</Text>
             </View>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Kristina', time: '7:48 PM', location: 'New York'})}>
+            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Kristina', profile: require('../assets/images/profile/kristina.jpg'), time: '7:48 PM', location: 'New York'})}>
                 <View style={styles.singleBox}>
                     <View style={styles.shadows}>
                     <Image source={require('../assets/images/profile/kristina.jpg')} style={styles.profile}></Image>
@@ -70,7 +71,7 @@ export default function FriendList({}) {
                     <Text style={styles.timeText}>New York, 7:48 PM</Text>
                 </View>
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Mhar', time: '5:48 PM', location: 'Manila'})}>
+            <Pressable onPress={() => navigation.navigate('DraftToken', {name: 'Mhar', profile: require('../assets/images/profile/mhar.png'), time: '5:48 PM', location: 'Manila'})}>
                 <View style={styles.singleBox}>
                     <View style={styles.shadows}>
                     <Image source={require('../assets/images/profile/mhar.png')} style={styles.profile}></Image>

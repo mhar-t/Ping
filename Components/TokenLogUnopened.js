@@ -2,9 +2,11 @@ import { StyleSheet, Text, View, Pressable, Image, FlatList, ScrollView, Recycle
 import { useNavigation } from '@react-navigation/native';
 import colors from '../Themes/Colors';
 
-export default function TokenLogUnopened({id, name, profile, emoji, desc, desc2, opened}) {
+export default function TokenLogUnopened({id, name, profile, emoji, desc, desc2, opened, loc}) {
+    const navigation = useNavigation();
     if (opened == 0) {
         return (
+            <Pressable onPress={() => navigation.navigate(name + 'Token', {id: id, name: name, profile: profile, emoji: emoji, desc: desc, desc2: desc2, opened: opened, loc: loc})}>
             <View style={styles.boxUnread}>
                     <View style={styles.shadows}>
                         <Image source={profile} style={styles.profilePicUnopened}></Image>
@@ -13,6 +15,7 @@ export default function TokenLogUnopened({id, name, profile, emoji, desc, desc2,
                     <Text style={styles.nameText}>{name}</Text>
                     <Text style={styles.descText}>{desc2}</Text>
                 </View>
+                </Pressable>
         )
     } else {
         return (

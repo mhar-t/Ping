@@ -9,6 +9,9 @@ import MomentConfirmationPage from './Additional screens/MomentConfirmationPage'
 import TokenLog from './Additional screens/TokenLog';
 import DraftToken from './Additional screens/DraftToken'
 import TokenFriends from './TokenFriends';
+import TokenFullScreen from '../Components/TokenFullScreen';
+import TokenConfirmation from './Additional screens/TokenConfirmation';
+import TokenScheduleConfirmation from './Additional screens/TokenScheduleConfirmation';
 
 const Stack = createStackNavigator();
 
@@ -65,8 +68,14 @@ export default function HomeStack({}) {
     {/*Tokens*/}
     <Stack.Screen name="TokenLog" component={TokenLog} />
     <Stack.Screen name="DraftToken" component={DraftToken} />
+    <Stack.Screen name="TokenConfirmation" component={TokenConfirmation} />
+    <Stack.Screen name="TokenScheduleConfirmation" component={TokenScheduleConfirmation} />
     <Stack.Screen name="TokenFriends" component={TokenFriends} />
-    
+    <Stack.Screen name="EmilyToken" component={TokenFullScreen} />
+    <Stack.Screen name="AdaToken" component={TokenFullScreen} />
+    <Stack.Screen name="BryanToken" component={TokenFullScreen} />
+    <Stack.Screen name="KristinaToken" component={TokenFullScreen} />
+
   </Stack.Navigator>
     );
   }
