@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Pressable, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image, FlatList, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
@@ -11,9 +11,12 @@ import React, { useState } from 'react';
 import { DATA4 } from '../../assets/moments/moment1';
 import MomentLogHome from '../../Components/MomentLogHome';
 
+import Modal from "react-native-modal";
+
 
 export default function HomeScreen({}) {
     const [count, setCount] = useState(0);
+
     const navigation = useNavigation();
 
     const renderItem = (item) => (
@@ -80,7 +83,13 @@ export default function HomeScreen({}) {
         }
     }
 
+    const [isMomentModalVisible, setIsMomentModalVisible] = React.useState(false);
+    const toggleMomentModal = () => setIsMomentModalVisible(() => !isMomentModalVisible); 
+
+    const [isTokenModalVisible, setIsTokenModalVisible] = React.useState(false);
+    const toggleTokenModal = () => setIsTokenModalVisible(() => !isTokenModalVisible); 
     return (
+
         <View style={{backgroundColor: colors.background, width: '100%', height: '100%'}}>
             <View style={styles.header}>
                 <View style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'row', padding: 24, marginTop: 40, alignContent: 'center', justifyContent: 'space-between'}}>
@@ -96,7 +105,23 @@ export default function HomeScreen({}) {
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                         <Image source={require('../../assets/icons/moment.png')} style={styles.icon}/>
                         <Text style={styles.subheading}>Your Moments</Text>
-                        <Ionicons name="information-circle-outline" size={24} color={colors.brown} />
+                        <Pressable onPress={toggleMomentModal}>
+                            <Ionicons name="information-circle-outline" size={24} color={colors.brown} />
+                        </Pressable>
+                        <Modal isVisible={isMomentModalVisible}>
+                            <View style={{ flex: 1, backgroundColor: colors.cream, alignItems: 'center', justifyContent: 'center'}}>
+                                <Image source = { require('../../assets/onboarding/moments.png') }/>
+
+                                <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.darkpink, paddingBottom: '7%'}}>Create Meaningful Moments</Text>
+                                <View style={{width: '90%', justifyContent: 'center', alignItems: 'center', paddingBottom: '7%'}}> 
+                                    <Text style={{fontSize: 16, width: '90%', justifyContent: 'center', alignItems: 'center', textAlign: 'center', paddingBottom: 10}}>Moments give you space to think about your loved ones. We let them know you thought of them. </Text>
+                                    <Text style={{fontSize: 16, width: '90%', justifyContent: 'center', alignItems: 'center', textAlign: 'center', paddingBottom: 10}}>You might even get to experience the rare shared moment when you and a loved one take a moment at the same time. </Text>
+                                </View> 
+                                <Pressable onPress={toggleMomentModal} style={{borderWidth: 2, borderColor: colors.darkgreen, backgroundColor: colors.darkgreen, padding: 3}}>
+                                    <Text style={{fontSize: 20, color: colors.white}}> Done </Text>
+                                </Pressable>
+                            </View>
+                        </Modal>
                     </View>
                     <Pressable onPress={() => {navigation.navigate('MomentsLog')}}>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
@@ -112,7 +137,22 @@ export default function HomeScreen({}) {
                             <Image source={require('../../assets/icons/tokens.png')} style={styles.icon2}/>
                         </View>
                         <Text style={styles.subheading}>Your Tokens</Text>
-                        <Ionicons name="information-circle-outline" size={24} color={colors.brown} />
+                        <Pressable onPress={toggleTokenModal}>
+                            <Ionicons name="information-circle-outline" size={24} color={colors.brown} />
+                        </Pressable>
+                        <Modal isVisible={isTokenModalVisible}>
+                            <View style={{ flex: 1, backgroundColor: colors.cream, alignItems: 'center', justifyContent: 'center'}}>
+                                <Image source = { require('../../assets/onboarding/tokens.png') }/>
+
+                                <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.darkpink, paddingBottom: '7%', paddingTop: '10%'}}>Send Thoughtful Tokens</Text>
+                                <View style={{width: '90%', justifyContent: 'center', alignItems: 'center', paddingBottom: '7%'}}> 
+                                    <Text style={{fontSize: 16, width: '90%', justifyContent: 'center', alignItems: 'center', textAlign: 'center', paddingBottom: 10}}>Tokens are a series of emojis that you can easily send to your loved ones. Make inside jokes and share what’s going on in your life. </Text>
+                                </View> 
+                                <Pressable onPress={toggleTokenModal} style={{borderWidth: 2, borderColor: colors.darkgreen, backgroundColor: colors.darkgreen, padding: 3}}>
+                                    <Text style={{fontSize: 20, color: colors.white}}> Done </Text>
+                                </Pressable>
+                            </View>
+                        </Modal>
                     </View>
                     <Pressable onPress={() => {navigation.navigate('TokenLog')}}>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
@@ -129,7 +169,7 @@ export default function HomeScreen({}) {
                     showsHorizontalScrollIndicator={false}
                     ListHeaderComponent={<View style={{marginLeft:32}}></View>}
                 />
-                <Pressable onPress={() => {navigation.navigate('DraftToken')}}>
+                <Pressable onPress={() => {navigation.navigate('TokenFriends')}}>
                     <View style={styles.pinkbutton}>
                         <Image source={require('../../assets/icons/tokensend.png')} style={styles.icon2}/>
                         <Text style={styles.buttonText}>Send Token</Text>

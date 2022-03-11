@@ -18,10 +18,10 @@ export default function MomentUnrequited({route}) {
                 <SafeAreaView style={styles.container}>
                     <View style={{width: '85%', height: 36, alignSelf: 'center', top: 8}}>
                         <Pressable onPress={() => navigation.navigate(name + 'ConfirmMoment', {name: name, profile: profile, time: time, location: location, type: 1})}>
-                            <Ionicons name="close-outline" size={32} color={colors.black}  />
+                            <Ionicons name="checkmark-sharp" size={32} color={colors.black}  />
                         </Pressable>
                     </View>
-                    <Text style={styles.momentText}>Take a moment to think about your {name}</Text>
+                    <Text style={styles.momentText}>You're showing {name} you are thinking of them</Text>
                     <View style={styles.profileImages}>
                         <Image source={profile} style={styles.otherUser}></Image>
                     </View>

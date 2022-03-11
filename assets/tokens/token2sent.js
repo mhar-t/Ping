@@ -7,9 +7,19 @@ export var DATA6 = [
       desc: 'Scheduled for 03/16 at 9 am',
       desc2: '11:04 am',
       scheduled: 0,
-    },
+    },    
     {
       id: '2',
+      name: 'Morgan',
+      profile: require('../images/profile/morgan.jpg'),
+      emoji: '⏰🌞',
+      desc: 'Just now',
+      desc2: 'Just now',
+      scheduled: 1,
+    },
+
+    {
+      id: '3',
       name: 'Mhar',
       profile: require('../images/profile/mhar.png'),
       emoji: '👨‍❤️‍👨🫀🧠',
@@ -18,7 +28,7 @@ export var DATA6 = [
       scheduled: 1,
     },
     {
-      id: '3',
+      id: '4',
       name: 'Emily',
       profile: require('../images/profile/emily.png'),
       emoji: '🐙🌝',
@@ -28,7 +38,7 @@ export var DATA6 = [
     },
 
     {
-        id: '4',
+        id: '5',
         name: 'Kristina',
         profile: require('../images/profile/kristina.jpg'),
         emoji: '🍗 🍧',
@@ -38,7 +48,7 @@ export var DATA6 = [
       },
 
       {
-        id: '5',
+        id: '6',
         name: 'Ada',
         profile: require('../images/profile/ada.png'),
         emoji: '🧑‍💻☕️',

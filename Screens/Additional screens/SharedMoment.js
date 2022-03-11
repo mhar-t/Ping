@@ -24,10 +24,10 @@ export default function SharedMoment({route}) {
         <SafeAreaView style={styles.container}>
             <View style={{width: '85%', height: 36, alignSelf: 'center', top: 8}}>
             <Pressable onPress={() => whereToNavigate()}>
-                    <Ionicons name="close-outline" size={32} color={colors.black}  />
+                    <Ionicons name="checkmark-sharp" size={32} color={colors.black}  />
                 </Pressable>
             </View>
-            <Text style={styles.momentText}>Take a shared moment to think about your connection</Text>
+            <Text style={styles.momentText}>You and {name} are sharing a moment❤️</Text>
             <Image source={require('../../assets/icons/moment.png')} style={styles.icon}/>
             <View style={styles.profileImages}>
                 <Image source={profile} style={styles.otherUser}></Image>

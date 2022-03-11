@@ -1,9 +1,16 @@
-import React from 'react'; 
+import React, { useState } from 'react'; 
 
-import { View, Text, StyleSheet, Pressable, Image, TextInput} from 'react-native'; 
+import { View, Text, StyleSheet, Pressable, Image, TextInput, Button} from 'react-native'; 
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+//import DateTimePicker from '@react-native-community/datetimepicker';
+
+//import DatePicker from 'react-native-date-picker'
+
+import Modal from "react-native-modal";
+
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 //import {Prompt} from '../../Components/Prompt'; 
 
 
@@ -14,16 +21,11 @@ import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNat
 
 
 
-export default function DraftToken({}) {
+export default function DraftToken({route}) {
     const navigation = useNavigation();
+    const {name, profile, time, location} = route.params; 
 
 
-    //HARD CODED MORGAN'S NAME AND TIME
-    // HARD CODED LAST TOKEN
-    // TODO ^^ REPLACE WITH PROPS !!!! 
-    // TODO: FONT STYLE 
-
-    //TODO --> SCHEDULE AND SEND BUTTONS!!
 
     return(
         <View style={styles.main}>
@@ -42,15 +44,15 @@ export default function DraftToken({}) {
             
             <View style={styles.body}>
                 <View style={styles.friend}>
-                    <View>
-                        <Image source={require('../../assets/images/profile/morgan.jpg')} style={styles.profile}></Image>
-                    </View>
+                    {/* <View>
+                        <Image source={require({profile})} style={styles.profile}></Image>
+                    </View> */}
                     <View style={styles.friendInfo}> 
-                        <Text style={{fontWeight: 'bold', fontSize: 16}}>Morgan</Text>   
-                        <Text style={{fontSize: 16, marginTop: 3}}>Palo Alto, 4:48 pm</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 16}}>To: {name}</Text>   
+                        <Text style={{fontSize: 16, marginTop: 3}}>{location}, {time}</Text>
                     </View> 
-                    <View style={{paddingLeft: 40, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text>🍕🌺</Text>
+                    <View style={{paddingLeft: 80, alignItems: 'center', justifyContent: 'center'}}>
+                        <Text style={{fontSize: 22}}>🍕🌺</Text>
                         <Text style={{fontSize: 16, paddingTop: 5}}>Last Token</Text>
                     </View>
                 </View>
@@ -74,13 +76,16 @@ export default function DraftToken({}) {
                         />
                     </View> 
                 </View>
+
                 <View style={styles.sendContainer}>
-                    <View style={styles.schedule}>
-                        <Text style={{fontSize: 16}}>Schedule</Text>
-                    </View>
-                    <View style={styles.send}>
-                        <Text style={{fontSize: 16}}>Send Now</Text>
-                    </View>
+
+
+                    <Pressable  style={styles.schedule}>
+                        <Text style={{fontSize: 18}}>Schedule</Text>
+                    </Pressable>
+                    <Pressable style={styles.send} onPress={() => navigation.navigate('TokenLog')}>
+                        <Text style={{fontSize: 18}}>Send Now</Text>
+                    </Pressable>
                 </View>
                 <View style={styles.bottom}></View>
             </View> 
@@ -142,7 +147,7 @@ const styles = StyleSheet.create({
 
     friendInfo:{
         paddingRight: 40, 
-        paddingLeft: 10, 
+        //paddingLeft: 10, 
         alignItems: 'baseline'
     }, 
 
@@ -199,11 +204,12 @@ const styles = StyleSheet.create({
         fontSize: 42
     },
     sendContainer:{
-        flex: 2,
+        flex: 3,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center', 
         //backgroundColor: 'yellow'
+
 
     },
 
@@ -211,7 +217,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: colors.black,
-        borderWidth: 1,
+        //borderWidth: 1,
         height: '40%',
         width: '30%',
         backgroundColor: colors.cream,
@@ -226,12 +232,12 @@ const styles = StyleSheet.create({
     send:{
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.lightpink,
+        backgroundColor: colors.darkgreen,
         height: '40%',
         width: '40%',
         borderRadius: 15,
         borderColor: colors.black,
-        borderWidth: 1,
+        //borderWidth: 1,
 
 
         shadowColor: "#292929",
@@ -240,7 +246,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: -1, height: 5 },
     },
     bottom: {
-        flex: 1,
+        flex: 2,
     }
 
 
